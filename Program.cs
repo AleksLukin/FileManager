@@ -11,6 +11,12 @@ namespace FileManager
     {
         static void Main(string[] args)
         {
+            Output();
+            Console.ReadLine();
+
+        }
+        static void Output()
+        {
             string address = Console.ReadLine();
             Console.WriteLine("*************************************");
 
@@ -32,8 +38,6 @@ namespace FileManager
                     Console.WriteLine(list[i]);
                 }
             }
-            Console.ReadLine();
-
         }
     }
 }
