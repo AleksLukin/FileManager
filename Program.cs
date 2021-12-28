@@ -11,13 +11,36 @@ namespace FileManager
     {
         static void Main(string[] args)
         {
-            Output();
+            string command = Console.ReadLine();
+            if (command=="ls")
+            {
+                Output();
+            }         
+            
+            else if (command=="cp")
+            {
+                CopyDir();
+            }
+            else if (command=="rm")
+            {
+                RemoveDir();
+            }
+            else if (command=="dir")
+            {
+                InfoDir();
+            }
+            else
+            {
+                Console.WriteLine("Такая команда не используется!");
+            }
+
             Console.ReadLine();
 
         }
         static void Output()
         {
             string address = Console.ReadLine();
+            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
             Console.WriteLine("*************************************");
 
             string[] list = Directory.GetFileSystemEntries(address, "*", SearchOption.AllDirectories);
@@ -39,6 +62,27 @@ namespace FileManager
                 }
             }
         }
+        static void CopyDir()
+        {
+            string address = Console.ReadLine();
+            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
+            Console.WriteLine("*************************************");
+        }
+        static void RemoveDir()
+        {
+            string address = Console.ReadLine();
+            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
+            Console.WriteLine("*************************************");
+        }
+        static void InfoDir()
+        {
+            string address = Console.ReadLine();
+            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
+            Console.WriteLine("*************************************");
+        }
     }
 }
 //Вывод дерева файловой системы с условием “пейджинга” - только два уровня!
+//Копирование файлов и каталогов
+//Удаление файлов и каталогов
+//Просмотр информации о файлах и каталогах
