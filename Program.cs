@@ -41,9 +41,6 @@ namespace FileManager
         static void Output()
         {
             string address = Console.ReadLine();
-            
-            //Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
-            //Console.Clear();
             Console.WriteLine("*************************************");
 
             string[] list = Directory.GetFileSystemEntries(address, "*", SearchOption.AllDirectories);
