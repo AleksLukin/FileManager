@@ -11,7 +11,30 @@ namespace FileManager
     {
         static void Main(string[] args)
         {
-            Output();
+            string command = Console.ReadLine();
+            Console.Clear();
+            if (command == "ls")
+            {
+                Output();
+            }
+
+            if (command == "cp")
+            {
+                CopyDir();
+            }
+            else if (command == "rm")
+            {
+                RemoveDir();
+            }
+            //else if (command == "dir")
+            //{
+            //    InfoDir();
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Такая команда не используется!");
+            //}
+
             Console.ReadLine();
 
         }
@@ -22,7 +45,7 @@ namespace FileManager
 
             string[] list = Directory.GetFileSystemEntries(address, "*", SearchOption.AllDirectories);
 
-            int level = int.Parse(Console.ReadLine());
+            int level = int.Parse(Console.ReadLine()); //указать номер страницы, которую необходимо открыть
 
             if (level == 1)
             {
@@ -39,6 +62,34 @@ namespace FileManager
                 }
             }
         }
+        static void CopyDir()
+        {
+            string address = Console.ReadLine(); //Вводим адрес папки, которую хотим скопировать
+            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
+            Console.Clear();
+            string targetPath = Console.ReadLine(); //Вводим адрес папки, куда мы хотим её скопировать
+
+            Directory.CreateDirectory(targetPath); //создаем по новому адресу "скопированную" папку
+
+        }
+        static void RemoveDir()
+        {
+            string address = Console.ReadLine();
+            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
+            Directory.Delete(address);
+            Console.Clear();
+
+        }
+        //static void InfoDir()
+        //{
+        //    string address = Console.ReadLine();
+        //    Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
+        //    Console.WriteLine("*************************************");
+        //}
+
     }
 }
 //Вывод дерева файловой системы с условием “пейджинга” - только два уровня!
+//Копирование файлов и каталогов
+//Удаление файлов и каталогов
+//Просмотр информации о файлах и каталогах
