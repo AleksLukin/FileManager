@@ -18,23 +18,6 @@ namespace FileManager
                 Output();
             }
 
-            if (command == "cp")
-            {
-                CopyDir();
-            }
-            //else if (command == "rm")
-            //{
-            //    RemoveDir();
-            //}
-            //else if (command == "dir")
-            //{
-            //    InfoDir();
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Такая команда не используется!");
-            //}
-
             Console.ReadLine();
 
         }
@@ -62,31 +45,6 @@ namespace FileManager
                 }
             }
         }
-        static void CopyDir()
-        {
-            string address = Console.ReadLine();
-            Console.Clear();
-            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
-            Console.Clear();
-            string targetPath = Console.ReadLine();
-            
-            Console.WriteLine("*************************************");
-
-            System.IO.Directory.CreateDirectory(targetPath);
-
-        }
-        //static void RemoveDir()
-        //{
-        //    string address = Console.ReadLine();
-        //    Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
-        //    Console.WriteLine("*************************************");
-        //}
-        //static void InfoDir()
-        //{
-        //    string address = Console.ReadLine();
-        //    Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
-        //    Console.WriteLine("*************************************");
-        //}
     }
 }
 //Вывод дерева файловой системы с условием “пейджинга” - только два уровня!
