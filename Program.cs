@@ -26,14 +26,6 @@ namespace FileManager
             {
                 RemoveDir();
             }
-            //else if (command == "dir")
-            //{
-            //    InfoDir();
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Такая команда не используется!");
-            //}
 
             Console.ReadLine();
 
@@ -80,12 +72,6 @@ namespace FileManager
             Console.Clear();
 
         }
-        //static void InfoDir()
-        //{
-        //    string address = Console.ReadLine();
-        //    Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
-        //    Console.WriteLine("*************************************");
-        //}
 
     }
 }
