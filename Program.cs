@@ -26,10 +26,10 @@ namespace FileManager
             {
                 RemoveDir();
             }
-            //else if (command == "dir")
-            //{
-            //    InfoDir();
-            //}
+            else if (command == "dir")
+            {
+                InfoDir();
+            }
             //else
             //{
             //    Console.WriteLine("Такая команда не используется!");
@@ -70,7 +70,6 @@ namespace FileManager
             string targetPath = Console.ReadLine(); //Вводим адрес папки, куда мы хотим её скопировать
 
             Directory.CreateDirectory(targetPath); //создаем по новому адресу "скопированную" папку
-
         }
         static void RemoveDir()
         {
@@ -78,15 +77,17 @@ namespace FileManager
             Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
             Directory.Delete(address);
             Console.Clear();
-
         }
-        //static void InfoDir()
-        //{
-        //    string address = Console.ReadLine();
-        //    Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
-        //    Console.WriteLine("*************************************");
-        //}
+        static void InfoDir()
+        {
+            string address = Console.ReadLine();
+            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
 
+            DriveInfo di = new DriveInfo(address);
+            DirectoryInfo dirInfo = di.RootDirectory;
+         
+            Console.WriteLine(dirInfo.Attributes.ToString());
+        }
     }
 }
 //Вывод дерева файловой системы с условием “пейджинга” - только два уровня!
