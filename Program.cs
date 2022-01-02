@@ -30,10 +30,7 @@ namespace FileManager
             {
                 InfoDir();
             }
-            //else
-            //{
-            //    Console.WriteLine("Такая команда не используется!");
-            //}
+
 
             Console.ReadLine();
 
