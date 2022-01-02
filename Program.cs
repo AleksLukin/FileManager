@@ -22,18 +22,18 @@ namespace FileManager
             {
                 CopyDir();
             }
-            //else if (command == "rm")
-            //{
-            //    RemoveDir();
-            //}
+            else if (command == "rm")
+            {
+                RemoveDir();
+            }
             //else if (command == "dir")
             //{
             //    InfoDir();
             //}
-            else
-            {
-                Console.WriteLine("Такая команда не используется!");
-            }
+            //else
+            //{
+            //    Console.WriteLine("Такая команда не используется!");
+            //}
 
             Console.ReadLine();
 
@@ -72,14 +72,14 @@ namespace FileManager
             Directory.CreateDirectory(targetPath); //создаем по новому адресу "скопированную" папку
 
         }
-        //static void RemoveDir()
-        //{
-        //    string address = Console.ReadLine();
-        //    Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
-        //    //Console.WriteLine("*************************************");
-        //    Console.Clear();
+        static void RemoveDir()
+        {
+            string address = Console.ReadLine();
+            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
+            Directory.Delete(address);
+            Console.Clear();
 
-        //}
+        }
         //static void InfoDir()
         //{
         //    string address = Console.ReadLine();
