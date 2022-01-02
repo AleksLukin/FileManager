@@ -30,10 +30,10 @@ namespace FileManager
             //{
             //    InfoDir();
             //}
-            //else
-            //{
-            //    Console.WriteLine("Такая команда не используется!");
-            //}
+            else
+            {
+                Console.WriteLine("Такая команда не используется!");
+            }
 
             Console.ReadLine();
 
@@ -45,7 +45,7 @@ namespace FileManager
 
             string[] list = Directory.GetFileSystemEntries(address, "*", SearchOption.AllDirectories);
 
-            int level = int.Parse(Console.ReadLine());
+            int level = int.Parse(Console.ReadLine()); //указать номер страницы, которую необходимо открыть
 
             if (level == 1)
             {
@@ -64,22 +64,21 @@ namespace FileManager
         }
         static void CopyDir()
         {
-            string address = Console.ReadLine();
-            Console.Clear();
+            string address = Console.ReadLine(); //Вводим адрес папки, которую хотим скопировать
             Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
             Console.Clear();
-            string targetPath = Console.ReadLine();
-            
-            Console.WriteLine("*************************************");
+            string targetPath = Console.ReadLine(); //Вводим адрес папки, куда мы хотим её скопировать
 
-            System.IO.Directory.CreateDirectory(targetPath);
+            Directory.CreateDirectory(targetPath); //создаем по новому адресу "скопированную" папку
 
         }
         //static void RemoveDir()
         //{
         //    string address = Console.ReadLine();
         //    Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
-        //    Console.WriteLine("*************************************");
+        //    //Console.WriteLine("*************************************");
+        //    Console.Clear();
+
         //}
         //static void InfoDir()
         //{
@@ -87,6 +86,7 @@ namespace FileManager
         //    Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
         //    Console.WriteLine("*************************************");
         //}
+
     }
 }
 //Вывод дерева файловой системы с условием “пейджинга” - только два уровня!
