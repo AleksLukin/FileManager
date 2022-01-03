@@ -17,7 +17,6 @@ namespace FileManager
             {
                 Output();
             }
-
             if (command == "cp")
             {
                 CopyDir();
@@ -31,9 +30,7 @@ namespace FileManager
                 InfoDir();
             }
 
-
             Console.ReadLine();
-
         }
         static void Output()
         {
@@ -79,11 +76,14 @@ namespace FileManager
         {
             string address = Console.ReadLine();
             Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
-
+            Console.Clear();
+            Console.WriteLine("*************************************");
+            Output();
             DriveInfo di = new DriveInfo(address);
             DirectoryInfo dirInfo = di.RootDirectory;
-         
+            Console.WriteLine("*************************************");
             Console.WriteLine(dirInfo.Attributes.ToString());
+            Console.WriteLine("*************************************");
         }
     }
 }
