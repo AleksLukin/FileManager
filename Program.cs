@@ -29,17 +29,21 @@ namespace FileManager
             {
                 InfoDir();
             }
-
             Console.ReadLine();
         }
         static void Output()
         {
             string address = Console.ReadLine();
-            Console.WriteLine("*************************************");
+            
 
             string[] list = Directory.GetFileSystemEntries(address, "*", SearchOption.AllDirectories);
 
             int level = int.Parse(Console.ReadLine()); //указать номер страницы, которую необходимо открыть
+            Console.Clear();
+            Console.WriteLine("*************************************");
+            Console.WriteLine(address);
+            Console.WriteLine("*************************************");
+            Console.WriteLine("Page "+level);
 
             if (level == 1)
             {
@@ -77,7 +81,6 @@ namespace FileManager
             string address = Console.ReadLine();
             Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
             Console.Clear();
-            Console.WriteLine("*************************************");
             Output();
             DriveInfo di = new DriveInfo(address);
             DirectoryInfo dirInfo = di.RootDirectory;
