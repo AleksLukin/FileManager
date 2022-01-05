@@ -11,18 +11,50 @@ namespace FileManager
     {
         static void Main(string[] args)
         {
-            Output();
+            string command = Console.ReadLine();
+            Console.Clear();
+            if (command == "ls")
+            {
+                Output();
+            }
+            else if (command == "cp")
+            {
+                CopyDir();
+            }
+            else if (command == "rm")
+            {
+                RemoveDir();
+            }
+            else if (command == "dir")
+            {
+                InfoDir();
+            }
+            else if (command == "file cp")
+            {
+                CopyFile();
+            }
+            else if (command == "file rm")
+            {
+                RemoveFile();
+            }
+            else if (command == "file info")
+            {
+                InfoFile();
+            }
             Console.ReadLine();
-
         }
         static void Output()
         {
-            string address = Console.ReadLine();
-            Console.WriteLine("*************************************");
+            string address = Console.ReadLine();            
 
             string[] list = Directory.GetFileSystemEntries(address, "*", SearchOption.AllDirectories);
 
-            int level = int.Parse(Console.ReadLine());
+            int level = int.Parse(Console.ReadLine()); //указать номер страницы, которую необходимо открыть
+            Console.Clear();
+            Console.WriteLine("*************************************");
+            Console.WriteLine(address);
+            Console.WriteLine("*************************************");
+            Console.WriteLine("Page "+level);
 
             if (level == 1)
             {
@@ -39,6 +71,66 @@ namespace FileManager
                 }
             }
         }
+        static void CopyDir()
+        {
+            string address = Console.ReadLine(); //Вводим адрес папки, которую хотим скопировать
+            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
+            Console.Clear();
+            string targetPath = Console.ReadLine(); //Вводим адрес папки, куда мы хотим её скопировать
+
+            Directory.CreateDirectory(targetPath); //создаем по новому адресу "скопированную" папку
+        }
+        static void RemoveDir()
+        {
+            string address = Console.ReadLine();
+            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
+            Directory.Delete(address);
+            Console.Clear();
+        }
+        static void InfoDir()
+        {
+            string address = Console.ReadLine();
+            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
+            Console.Clear();
+            Output();
+            DriveInfo di = new DriveInfo(address);
+            DirectoryInfo dirInfo = di.RootDirectory;
+            Console.WriteLine("*************************************");
+            Console.WriteLine(dirInfo.Attributes.ToString());
+            Console.WriteLine("*************************************");
+        }
+        static void CopyFile()
+        {
+            string fileName = "test.txt";
+            string sourcePath = Console.ReadLine();
+            string targetPath = Console.ReadLine();
+
+            string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
+            string destFile = System.IO.Path.Combine(targetPath, fileName);
+
+            File.Copy(sourceFile, destFile, true);
+        }
+        static void RemoveFile()
+        {
+            string address = Console.ReadLine();
+            Console.WriteLine(File.Exists(address)); //проверяет на наличие заданной директории
+            File.Delete(address);
+            Console.Clear();
+        }
+        static void InfoFile()
+        {
+            string address = Console.ReadLine();
+            Console.WriteLine(File.Exists(address)); //проверяет на наличие заданной директории
+            //Console.Clear();
+            //Output();
+            FileInfo fileInfo = new FileInfo(address);
+            Console.WriteLine("*************************************");
+            Console.WriteLine(fileInfo.Attributes.ToString());
+            Console.WriteLine("*************************************");
+        }
     }
 }
 //Вывод дерева файловой системы с условием “пейджинга” - только два уровня!
+//Копирование файлов и каталогов
+//Удаление файлов и каталогов
+//Просмотр информации о файлах и каталогах
