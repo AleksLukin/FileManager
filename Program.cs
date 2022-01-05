@@ -13,31 +13,31 @@ namespace FileManager
         {
             string command = Console.ReadLine();
             Console.Clear();
-            if (command == "ls")
+            if (command == "ls") //вывод файлов и каталогов в консоль
             {
                 Output();
             }
-            else if (command == "cp")
+            else if (command == "cp") //копирование каталога
             {
                 CopyDir();
             }
-            else if (command == "rm")
+            else if (command == "rm") //удаление каталога
             {
                 RemoveDir();
             }
-            else if (command == "dir")
+            else if (command == "dir") //вывод информации о каталоге
             {
                 InfoDir();
             }
-            else if (command == "file cp")
+            else if (command == "file cp") //копирование файла
             {
                 CopyFile();
             }
-            else if (command == "file rm")
+            else if (command == "file rm") //удаление файла
             {
                 RemoveFile();
             }
-            else if (command == "file info")
+            else if (command == "file info") // вывод информации о файле - атрибуты и размер
             {
                 InfoFile();
             }
@@ -46,11 +46,9 @@ namespace FileManager
         static void Output()
         {
             string address = Console.ReadLine();            
-
             string[] list = Directory.GetFileSystemEntries(address, "*", SearchOption.AllDirectories);
-
             int level = int.Parse(Console.ReadLine()); //указать номер страницы, которую необходимо открыть
-            Console.Clear();
+            Console.Clear(); //чистим консоль
             Console.WriteLine("*************************************");
             Console.WriteLine(address);
             Console.WriteLine("*************************************");
@@ -73,58 +71,60 @@ namespace FileManager
         }
         static void CopyDir()
         {
-            string address = Console.ReadLine(); //Вводим адрес папки, которую хотим скопировать
-            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
-            Console.Clear();
+            string address = Console.ReadLine(); //Вводим адрес каталога, который хотим скопировать
+            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданного каталога
+            Console.Clear(); //чистим консоль
             string targetPath = Console.ReadLine(); //Вводим адрес папки, куда мы хотим её скопировать
 
             Directory.CreateDirectory(targetPath); //создаем по новому адресу "скопированную" папку
         }
         static void RemoveDir()
         {
-            string address = Console.ReadLine();
-            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
-            Directory.Delete(address);
-            Console.Clear();
+            string address = Console.ReadLine(); //вводим адрес каталога 
+            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданного каталога
+            Directory.Delete(address); //удалаем каталог по заданному адресу
+            Console.Clear(); //чистим консоль
         }
         static void InfoDir()
         {
-            string address = Console.ReadLine();
-            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
-            Console.Clear();
-            Output();
-            DriveInfo di = new DriveInfo(address);
-            DirectoryInfo dirInfo = di.RootDirectory;
+            string address = Console.ReadLine(); //вводим адрес каталога
+            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданного каталога
+            Console.Clear(); //чистим консоль
+
+            Output(); //выводим содержимое каталога на консоль
+
+            DriveInfo driveInfo = new DriveInfo(address);
+            DirectoryInfo dirInfo = driveInfo.RootDirectory;
             Console.WriteLine("*************************************");
             Console.WriteLine(dirInfo.Attributes.ToString());
             Console.WriteLine("*************************************");
         }
         static void CopyFile()
         {
-            string fileName = "test.txt";
-            string sourcePath = Console.ReadLine();
-            string targetPath = Console.ReadLine();
+            string fileName = "test.txt"; //имя файла для копирования
+            string sourcePath = Console.ReadLine(); //вводим адрес файла для копирования
+            string targetPath = Console.ReadLine(); // вводим новый адрес, куда файл будет скопирован
 
-            string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
-            string destFile = System.IO.Path.Combine(targetPath, fileName);
+            string sourceFile = Path.Combine(sourcePath, fileName);
+            string destFile = Path.Combine(targetPath, fileName);
 
-            File.Copy(sourceFile, destFile, true);
+            File.Copy(sourceFile, destFile, true); //копируем файл 
         }
         static void RemoveFile()
         {
-            string address = Console.ReadLine();
+            string address = Console.ReadLine(); //вводим адрес файла для удаления
             Console.WriteLine(File.Exists(address)); //проверяет на наличие заданной директории
-            File.Delete(address);
-            Console.Clear();
+            File.Delete(address); // удаляем файл по определенному адресу
+            Console.Clear(); //чистим консоль
         }
         static void InfoFile()
         {
-            string address = Console.ReadLine();
+            string address = Console.ReadLine(); //вводим адрес файла
             Console.WriteLine(File.Exists(address)); //проверяет на наличие заданной директории
-            FileInfo fileInfo = new FileInfo(address);
+            FileInfo fileInfo = new FileInfo(address); //создаем класс
             Console.WriteLine("*************************************");
-            Console.WriteLine(fileInfo.Attributes.ToString());
-            Console.WriteLine(fileInfo.Length.ToString());
+            Console.WriteLine(fileInfo.Attributes.ToString()); //выводит атрибуты файла
+            Console.WriteLine(fileInfo.Length.ToString()); //выводит размер файла в байтах
             Console.WriteLine("*************************************");
         }
     }
@@ -133,3 +133,8 @@ namespace FileManager
 //Копирование файлов и каталогов
 //Удаление файлов и каталогов
 //Просмотр информации о файлах и каталогах - атрибуты и размер
+///В конфигурационном файле выведена настройка вывода количества элементов на страницу
+///При выходе сохраняется последнее состояние
+///Комментарии в коде
+///Документация к проекту в формате md
+///Приложение обрабатывает непредвиденные ситуации (не падает)
