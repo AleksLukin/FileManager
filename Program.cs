@@ -121,8 +121,6 @@ namespace FileManager
         {
             string address = Console.ReadLine();
             Console.WriteLine(File.Exists(address)); //проверяет на наличие заданной директории
-            //Console.Clear();
-            //Output();
             FileInfo fileInfo = new FileInfo(address);
             Console.WriteLine("*************************************");
             Console.WriteLine(fileInfo.Attributes.ToString());
