@@ -17,7 +17,7 @@ namespace FileManager
             {
                 Output();
             }
-            if (command == "cp")
+            else if (command == "cp")
             {
                 CopyDir();
             }
@@ -28,6 +28,14 @@ namespace FileManager
             else if (command == "dir")
             {
                 InfoDir();
+            }
+            else if (command == "file cp")
+            {
+                CopyFile();
+            }
+            else if (command == "file rm")
+            {
+                RemoveFile();
             }
             Console.ReadLine();
         }
@@ -87,6 +95,22 @@ namespace FileManager
             Console.WriteLine("*************************************");
             Console.WriteLine(dirInfo.Attributes.ToString());
             Console.WriteLine("*************************************");
+        }
+        static void CopyFile()
+        {
+            string address = Console.ReadLine(); //Вводим адрес папки, которую хотим скопировать
+            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
+            Console.Clear();
+            string targetPath = Console.ReadLine(); //Вводим адрес папки, куда мы хотим её скопировать
+
+            Directory.CreateDirectory(targetPath); //создаем по новому адресу "скопированную" папку
+        }
+        static void RemoveFile()
+        {
+            string address = Console.ReadLine();
+            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
+            Directory.Delete(address);
+            Console.Clear();
         }
     }
 }
