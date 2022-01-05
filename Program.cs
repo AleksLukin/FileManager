@@ -124,6 +124,7 @@ namespace FileManager
             FileInfo fileInfo = new FileInfo(address);
             Console.WriteLine("*************************************");
             Console.WriteLine(fileInfo.Attributes.ToString());
+            Console.WriteLine(fileInfo.Length.ToString());
             Console.WriteLine("*************************************");
         }
     }
@@ -131,4 +132,4 @@ namespace FileManager
 //Вывод дерева файловой системы с условием “пейджинга” - только два уровня!
 //Копирование файлов и каталогов
 //Удаление файлов и каталогов
-//Просмотр информации о файлах и каталогах
+//Просмотр информации о файлах и каталогах - атрибуты и размер
