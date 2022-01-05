@@ -45,8 +45,7 @@ namespace FileManager
         }
         static void Output()
         {
-            string address = Console.ReadLine();
-            
+            string address = Console.ReadLine();            
 
             string[] list = Directory.GetFileSystemEntries(address, "*", SearchOption.AllDirectories);
 
