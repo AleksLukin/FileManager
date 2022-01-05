@@ -37,6 +37,10 @@ namespace FileManager
             {
                 RemoveFile();
             }
+            else if (command == "file info")
+            {
+                InfoFile();
+            }
             Console.ReadLine();
         }
         static void Output()
@@ -113,6 +117,17 @@ namespace FileManager
             Console.WriteLine(File.Exists(address)); //проверяет на наличие заданной директории
             File.Delete(address);
             Console.Clear();
+        }
+        static void InfoFile()
+        {
+            string address = Console.ReadLine();
+            Console.WriteLine(File.Exists(address)); //проверяет на наличие заданной директории
+            //Console.Clear();
+            //Output();
+            FileInfo fileInfo = new FileInfo(address);
+            Console.WriteLine("*************************************");
+            Console.WriteLine(fileInfo.Attributes.ToString());
+            Console.WriteLine("*************************************");
         }
     }
 }
