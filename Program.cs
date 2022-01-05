@@ -98,18 +98,20 @@ namespace FileManager
         }
         static void CopyFile()
         {
-            string address = Console.ReadLine(); //Вводим адрес папки, которую хотим скопировать
-            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
-            Console.Clear();
-            string targetPath = Console.ReadLine(); //Вводим адрес папки, куда мы хотим её скопировать
+            string fileName = "test.txt";
+            string sourcePath = Console.ReadLine();
+            string targetPath = Console.ReadLine();
 
-            Directory.CreateDirectory(targetPath); //создаем по новому адресу "скопированную" папку
+            string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
+            string destFile = System.IO.Path.Combine(targetPath, fileName);
+
+            File.Copy(sourceFile, destFile, true);
         }
         static void RemoveFile()
         {
             string address = Console.ReadLine();
-            Console.WriteLine(Directory.Exists(address)); //проверяет на наличие заданной директории
-            Directory.Delete(address);
+            Console.WriteLine(File.Exists(address)); //проверяет на наличие заданной директории
+            File.Delete(address);
             Console.Clear();
         }
     }
